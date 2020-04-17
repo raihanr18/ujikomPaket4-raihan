@@ -1,0 +1,162 @@
+<!-- jumlah Lelang -->
+                  <b-card-group deck>
+                  <?php 
+
+                  require "db.php";
+
+                  $query = "SELECT * FROM lelang";
+                  $cek = mysqli_query($koneksi, $query);
+                  $result = mysqli_num_rows($cek);
+                  ?>
+
+                      <div class="col-sm" style="margin-top: 3cm;">
+                        <div class="card text-white bg-ligh mb-3" style="max-width: 18rem;">
+                          <div class="card-header" style="color:black;">YuAuct</div>
+                          <div class="card-body">
+                            <h5 class="card-title" style="color:black;">Jumlah Lelang Saat Ini</h5>
+                            <p class="card-text" style="color:black;"><?php echo $result; ?></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    <!-- jumlah Barang -->
+                  <?php 
+
+                  $query = "SELECT * FROM barang";
+                  $cek = mysqli_query($koneksi, $query);
+                  $result = mysqli_num_rows($cek);
+                  ?>
+
+                      <div class="col-sm" style="margin-top: 3cm;">
+                        <div class="card text-white bg-ligh mb-3" style="max-width: 18rem;">
+                          <div class="card-header" style="color:black;">YuAuct</div>
+                          <div class="card-body">
+                            <h5 class="card-title" style="color:black;">Jumlah Barang Saat Ini</h5>
+                            <p class="card-text" style="color:black;"><?php echo $result; ?></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <!-- /jumlah barang -->
+                  <!-- jumlah user -->
+                  <?php 
+
+                  $query = "SELECT * FROM tb_masyarakat";
+                  $cek = mysqli_query($koneksi, $query);
+                  $result = mysqli_num_rows($cek);
+                  ?>
+
+                      <div class="col-sm" style="margin-top: 3cm;">
+                        <div class="card text-white bg-ligh mb-3" style="max-width: 18rem;">
+                          <div class="card-header" style="color:black;">YuAuct</div>
+                          <div class="card-body">
+                            <h5 class="card-title" style="color:black;">Jumlah User Saat Ini</h5>
+                            <p class="card-text" style="color:black;"><?php echo $result; ?></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /jumlah user -->
+                    <!-- jumlah petugas -->
+                  <?php 
+
+                  $query = "SELECT * FROM petugas";
+                  $cek = mysqli_query($koneksi, $query);
+                  $result = mysqli_num_rows($cek);
+                  ?>
+
+                      <div class="col-sm" style="margin-top: 3cm;">
+                        <div class="card text-white bg-ligh mb-3" style="max-width: 18rem;">
+                          <div class="card-header" style="color:black;">YuAuct</div>
+                          <div class="card-body">
+                            <h5 class="card-title" style="color:black;">Jumlah Petugas Saat Ini</h5>
+                            <p class="card-text" style="color:black;"><?php echo $result; ?></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /jumlah petugas -->
+
+                    <!-- isi produk -->
+                <div class="collapse" id="showBarang">
+                <?php 
+                $db = new Database();
+                $data = $db->getAll('barang');
+
+                ?>
+                <div class="card w-60" style="border: 0px;">
+                <table class="table table-hover table-primary">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id Barang</th>
+                      <th scope="col">Nama Barang</th>
+                      <th scope="col">Tanggal</th>
+                      <th scope="col">Harga Awal</th>
+                      <th scope="col">Deskripsi</th>
+                    </tr>
+                  </thead>
+                  <?php
+                  foreach($data as $d):
+                  ?>
+                  <tbody>
+                    <tr>
+                      <th scope="row"><?php echo $d['id_barang'];?></th>
+                      <td><?php echo $d['nama_barang'];?></td>
+                      <td><?php echo $d['tgl'];?></td>
+                      <td><?php echo $d['harga_awal']; ?></td>
+                      <td><?php echo $d['deskripsi']; ?></td>
+                      <td>
+                        <a href="updatebarang.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-light"> Edit</a>
+                        <a href="deleteBarang.php?id=<?php echo $d['id_barang']; ?>" class="btn btn-primary" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')"> Hapus</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <?php endforeach; ?>
+                </table>
+                </div>
+                <br>
+                <br>
+                <a href="crud.php" class="btn btn-light">Tambah data</a>
+                </div>
+                <!-- /isi produk -->
+                <!-- jumlah petugas -->
+                <div class="collapse" id="showPetugas">
+                <?php 
+                $db = new Database();
+                $data = $db->getAll('petugas');
+
+                ?>
+                <div class="card w-60" style="border: 0px;">
+                <table class="table table-hover table-primary">
+                  <thead>
+                    <tr>
+                      <th scope="col">Id Petugas</th>
+                      <th scope="col">Id Level</th>
+                      <th scope="col">Nama Petugas</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Password</th>
+                    </tr>
+                  </thead>
+                  <?php
+                  foreach($data as $d):
+                  ?>
+                  <tbody>
+                    <tr>
+                      <th scope="row"><?php echo $d['id_petugas'];?></th>
+                      <td><?php echo $d['id_level'];?></td>
+                      <td><?php echo $d['nama_petugas'];?></td>
+                      <td><?php echo $d['username']; ?></td>
+                      <td><?php echo $d['password']; ?></td>
+                      <td>
+                        <a href="updatePetugas.php?id=<?php echo $d['id_petugas']; ?>" class="btn btn-light"> Edit</a>
+                        <a href="deletePetugas.php?id=<?php echo $d['id_petugas']; ?>" class="btn btn-primary" onclick="return confirm('Apakah anda yakin untuk menghapus data ini?')"> Hapus</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <?php endforeach; ?>
+                </table>
+                </div>
+                <br>
+                <br>
+                <a href="createPetugas.php" class="btn btn-light">Tambah data</a>
+                <!-- /jumlah petugas -->
