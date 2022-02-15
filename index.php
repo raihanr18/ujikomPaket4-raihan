@@ -8,8 +8,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="main_style.css">
-    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="css/main_style.css">
+    <link rel="stylesheet" href="css/about.php">
 
     <title>Halaman|Index</title>
 
@@ -148,11 +148,11 @@
       </div>
       <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="login.php">Login</a>
+            <a class="nav-link" href="auth/login.php">Login</a>
           </li>
           <h2 style="color:white;">|</h2>
           <li class="nav-item">
-            <a class="nav-link" href="register.php">Register</a>
+            <a class="nav-link" href="auth/register.php">Register</a>
           </li>
       </ul>
     </nav>
